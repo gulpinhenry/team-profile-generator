@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const gen = require("./lib/GenerateHTML")
+
+
+const gen = require("./lib/GenerateHTML");
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -12,7 +14,7 @@ var arr = []; // array of employees to be rendered
 function write(){
     let output = gen.generateHTML(arr);
     fs.writeFile("./dist/output.html", output, (err)=>
-        err ? console.error(err) : console.log('Success!')
+        err ? console.error(err) : console.log('Success! Check output.html. :)')
     );
 }
 
@@ -57,17 +59,18 @@ function promptManager()
 function promptEmployee(){
     console.log("start employee");
     inquirer.prompt([
-        {
-            type: "input", 
-            message:"Please enter the employee's name:",
-            name: "name"
-        },
 
         {
             type: "list", 
             message:"Please choose your employee's role",
             choices: ["Engineer", "Intern"],
             name: "employeeType"
+        },
+
+        {
+            type: "input", 
+            message:"Please enter the employee's name:",
+            name: "name"
         },
 
         {
@@ -104,8 +107,16 @@ function promptEmployee(){
         
     ])
     .then((response)=> {
-        // create object here, push to array
-        console.log(response);
+        if(response.employeeType == "Engineer")
+        {
+            let eng = new Engineer(response.name, response.id, response.email, response.info);
+            arr.push(eng);
+        }
+        else
+        {
+            let int = new Intern(response.name, response.id, response.email, response.info);
+            arr.push(int);
+        }
         if(response.more)
             promptEmployee();
         else
