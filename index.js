@@ -1,6 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const gen = require("./lib/generateHTML")
+const gen = require("./lib/GenerateHTML")
+
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern'); 
 //import employee classes
 var arr = []; // array of employees to be rendered
 
@@ -42,8 +46,8 @@ function promptManager()
         
     ])
     .then((response)=> {
-        // create object here, push to array
-        console.log("finish manager");
+        let man = new Manager(response.name, response.id, response.email, response.info);
+        arr.push(man);
         promptEmployee();
     });
        
@@ -114,7 +118,7 @@ function promptEmployee(){
 
 
 function init(){
-    console.log("\n\n\nsomeother intro stuff\n");
+    console.log("\nsome other intro stuff\n");
     promptManager();
 }
 
