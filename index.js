@@ -131,5 +131,4 @@ function init(){
     promptManager();
 }
 
-
 init();
