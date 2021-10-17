@@ -22,9 +22,8 @@ A Node.js command-line application that takes in information about employees on 
 
  <br />
 
-**See this unique experience in action!**
+**See this unique experience in action! Video walkthrough is in ./src/videodemo.mp4**
 
-![README Generator Demo]()
 
 ## Installation
 
