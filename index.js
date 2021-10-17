@@ -23,7 +23,6 @@ function promptManager()
     
    /* THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
     WHEN I enter the team manager’s name, employee ID, email address, and office number*/
-    console.log("start manager");
     return inquirer.prompt([
         {
             type: "input", 
@@ -57,7 +56,6 @@ function promptManager()
 
 
 function promptEmployee(){
-    console.log("start employee");
     inquirer.prompt([
 
         {
@@ -129,7 +127,7 @@ function promptEmployee(){
 
 
 function init(){
-    console.log("\nsome other intro stuff\n");
+    console.log("\nWelcome to the team profile generator!\n");
     promptManager();
 }
 
